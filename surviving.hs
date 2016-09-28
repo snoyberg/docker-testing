@@ -40,3 +40,4 @@ main = do
         [num] -> forever $ do
             say ("Child: " ++ num)
             threadDelay 1000000
+        _ -> error $ "Unknown args: " ++ show args

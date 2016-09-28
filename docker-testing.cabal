@@ -26,9 +26,3 @@ executable surviving
   default-language:    Haskell2010
   build-depends:       base, bytestring, process, unix
   ghc-options:         -Wall -threaded
-
-executable killme
-  main-is:             killme.hs
-  default-language:    Haskell2010
-  build-depends:       base, bytestring, process, unix
-  ghc-options:         -Wall -threaded
