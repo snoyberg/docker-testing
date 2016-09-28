@@ -13,6 +13,15 @@ in the meanwhile we created the [pid1 Haskell
 package](https://github.com/fpco/pid1#readme) together with a simple [fpco/pid1
 Docker image](https://hub.docker.com/r/fpco/pid1/).
 
+__NOTE__ The primary reason we wrote our own implementation in Haskell was to
+be able to embed it within [the Stack build tool](http://haskellstack.org).
+There are other lightweight init processes already available, such as
+[dumb-init](https://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html).
+I've also [blogged about using
+dumb-init](https://www.fpcomplete.com/blog/2016/08/bitrot-free-scripts). While
+this post uses `pid1`, there's nothing specific to it versus other init
+processes.
+
 ## Playing with entrypoints
 
 The default entrypoint for the ubuntu Docker image is a null entrypoint,
