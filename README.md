@@ -36,7 +36,7 @@ as a null entrypoint.
 ## Sending TERM signal to process
 
 We'll start with our
-[sigterm.hs](https://gist.github.com/snoyberg/caf8aeba588aaeecfa6ccf4c26f9f870#file-sigterm-hs)
+[sigterm.hs](https://github.com/snoyberg/docker-testing/blob/master/sigterm.hs)
 program, which runs `ps` (we'll see why soon), then sends itself a `SIGTERM`
 and then loops forever. On a Unix system, the default process behavior when
 receiving a `SIGTERM` is to exit. Therefore, we'd expect that our process will
@@ -135,7 +135,7 @@ known as an orphan, and needs to be adopted by the init process, aka PID1. It
 is the init process's job to reap orphans so they do not remain as zombies.
 
 The [orphans.hs
-program](https://gist.github.com/snoyberg/caf8aeba588aaeecfa6ccf4c26f9f870#file-orphans-hs)
+program](https://github.com/snoyberg/docker-testing/blob/master/orphans.hs)
 will:
 
 * Spawn a child process, and then loop forever calling `ps`
@@ -211,7 +211,7 @@ causing the Docker container to exit. In this case, the running process B will
 be forcibly closed (see [this Stack Overflow question for
 details](http://stackoverflow.com/questions/39739658/what-happens-to-other-processes-when-a-docker-containers-pid1-exits)).
 We can see this with our [surviving.hs
-program](https://gist.github.com/snoyberg/caf8aeba588aaeecfa6ccf4c26f9f870#file-surviving-hs):
+program](https://github.com/snoyberg/docker-testing/blob/master/surviving.hs)
 
 ```
 $ docker run --rm --entrypoint /usr/bin/env snoyberg/docker-testing surviving
