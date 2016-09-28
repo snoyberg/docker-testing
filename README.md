@@ -123,6 +123,12 @@ $ docker kill -s TERM sleeper
 Unlike with the `ubuntu` image, this will kill the container immediately, due
 to the `/sbin/pid1` entrypoint used by `fpco/pid1`.
 
+__NOTE__ In the case of `sigterm`, which sends the TERM signal to itself, it
+turns out you don't need a special PID1 process with signal handling, anything
+will do. For example, try `docker run --rm --entrypoint /usr/bin/env
+snoyberg/docker-testing /bin/bash -c "sigterm;echo bye"`. But playing with
+`sleep` will demonstrate the need for a real signal-aware PID1 process.
+
 ## Reaping orphans
 
 Suppose you have process A, which `fork`/`exec`s process B. When process B
