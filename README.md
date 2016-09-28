@@ -43,7 +43,7 @@ receiving a `SIGTERM` is to exit. Therefore, we'd expect that our process will
 just exit when run. Let's see:
 
 ```
- docker run --rm --entrypoint /usr/bin/env snoyberg/docker-testing sigterm
+$ docker run --rm --entrypoint /usr/bin/env snoyberg/docker-testing sigterm
   PID TTY          TIME CMD
     1 ?        00:00:00 sigterm
     9 ?        00:00:00 ps
