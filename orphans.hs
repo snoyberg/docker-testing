@@ -1,14 +1,4 @@
-import Control.Concurrent
-import Control.Monad
-import System.Environment
-import System.Process
-import System.IO
-import qualified Data.ByteString.Char8 as S8
-
-say :: String -> IO ()
-say s = do
-    S8.putStr (S8.pack (s ++ "\n"))
-    hFlush stdout
+import Import
 
 echo :: Int -> IO ()
 echo i = do

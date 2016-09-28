@@ -1,6 +1,4 @@
 resolver: lts-6.18
-docker:
-  enable: true
 packages:
 - '.'
 image:
