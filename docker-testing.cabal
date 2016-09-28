@@ -2,7 +2,6 @@ name:                docker-testing
 version:             0.1.0.0
 synopsis:            Executables for testing Docker edge cases
 license:             BSD3
-license-file:        LICENSE
 author:              Michael Snoyman
 maintainer:          michael@fpcomplete.com
 copyright:           2016 FP Complete

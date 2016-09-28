@@ -31,12 +31,10 @@ main = do
             _ <- forkIO (callProcess "orphans" ["child"])
 
             forever $ do
+                threadDelay 1000000
                 say "Still alive!"
                 callProcess "ps" []
-                threadDelay 1000000
         ["child"] -> do
-            callProcess "ps" []
-
             mapM_ echo [1..4]
 
             threadDelay 2000000

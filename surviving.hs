@@ -13,8 +13,10 @@ say s = do
     S8.putStr (S8.pack (s ++ "\n"))
     hFlush stdout
 
-die :: IO ()
-die = exitImmediately (ExitFailure 42)
+die :: String -> IO ()
+die msg = do
+    say msg
+    exitImmediately (ExitFailure 42)
 
 child :: Int -> IO ()
 child i = do
@@ -25,7 +27,7 @@ main :: IO ()
 main = do
     hSetBuffering stdout LineBuffering
 
-    _ <- installHandler sigTERM (Catch (say "Got a TERM")) Nothing
+    _ <- installHandler sigTERM (Catch (die "Got a TERM")) Nothing
 
     args <- getArgs
     case args of
