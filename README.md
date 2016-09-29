@@ -129,6 +129,15 @@ will do. For example, try `docker run --rm --entrypoint /usr/bin/env
 snoyberg/docker-testing /bin/bash -c "sigterm;echo bye"`. But playing with
 `sleep` will demonstrate the need for a real signal-aware PID1 process.
 
+__NOTE2__ There's a slight difference between `sigterm` and `sleep` when it
+comes to the behavior of sending hitting `Ctrl-C`. When you use `Ctrl-C`, it
+sends a `SIGINT` to the `docker run` process, which proxies that signal to the
+process inside the container. `sleep` will ignore it, just as it ignores
+`SIGTERM`, due to the default signal handlers for PID1 in the Linux kernel.
+However, the `sigterm` executable is written in Haskell, and the Haskell
+runtime _itself_ installs a signal handler that converts `SIGINT` into a user
+interrupt exception, overriding the PID1 default behavior.
+
 ## Reaping orphans
 
 Suppose you have process A, which `fork`/`exec`s process B. When process B
