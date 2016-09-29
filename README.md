@@ -136,7 +136,9 @@ process inside the container. `sleep` will ignore it, just as it ignores
 `SIGTERM`, due to the default signal handlers for PID1 in the Linux kernel.
 However, the `sigterm` executable is written in Haskell, and the Haskell
 runtime _itself_ installs a signal handler that converts `SIGINT` into a user
-interrupt exception, overriding the PID1 default behavior.
+interrupt exception, overriding the PID1 default behavior. For more on signal
+proxying, see the [docker attach
+documentation](https://docs.docker.com/engine/reference/commandline/attach/).
 
 ## Reaping orphans
 
